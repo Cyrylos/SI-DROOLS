@@ -1,0 +1,633 @@
+package com.sample
+
+
+import javax.swing.*;
+
+
+declare enum Question
+	PREGNANT("Has a major character been pregnant during the show?", new String[]{"Yes", "No", "No, but she thought she was","What do you mean, \"during\"?"}),
+		BLACK_PEOPLE("Are there any black people?", new String[]{"No. These characters are so white, they're frightened of the Irish", "Yes", "Barely"}),
+			ZOMBIES("Have there been zombies?", new String[]{"Only if you count dazed employees", "Yes", "No"}),
+				REAL_ZOMBIES("Real zombies?", new String[]{"Uh, yes, hello, only ALL THE TIME", "No"}),
+				OFTEN_GET_SHOT("Roughly how often do people get shot?",new String[]{"Every so often", "Never", "Literally all the time"}),
+					SING("Do the characters sing a lot?", new String[]{"Big time", "No, thank God"}),
+						SONG_TYPE("Covers or original songs?", new String[]{"Originals. Horrible, horrible originals.", "Covers. Horrible, horrible covers."}),
+			PHONES("Do the characters use cell phones?", new String[]{"Yes", "No"}),
+				SPORTS("Do they play sports?", new String[]{"Yes", "No"}),
+					REAL_OR_FANTASY("In the words of Queen, are these sports real life or just the fantasy?", new String[]{"Fantasy", "Real. I  play real sports, not try to be the best at excercising."}),//"Fantasy", "Real. \"I play real sports, not try to be the best at excercising.\""}),
+					HAUNTED("Is stuff haunted?", new String[]{"No, nothing", "Yes, almost everything", "Only Walt's eyes, with the absolute corruption of innermost soul"}),
+						MOTHER("Do we know who everyone's mother is?", new String[]{"Yeah...? Taht's a weird question", "No, and frankly it started getting ridiculous four seasons ago. Come on, writers, just tell us."}),
+				CARS("But they at least have cars, right?", new String[]{"Yes. Cars. Cars as luxurious as the women you can never have", "Who needs a car when you can ride DEAD HORSES?"}),
+		KIDS("Are there kids on the show, though?", new String[]{"Yes", "No"}),
+			NORTHEAST("Is the show set in the Northeast?", new String[]{"Yes", "No"}),
+				EVIL_QUEEN("Is there an evil queen?", new String[]{"Yes", "Only if you count ex-wife, amirite???", "No"}),
+				DIAPER_PLOTLINE("Could diaper changing be a legitimate plotline?", new String[]{"Unfortunately, yes", "No"}),
+					RICH_OR_POOR("Are the characters rich or poor?", new String[]{"Rich enough to be best friends with basically Oprah", "Poor enough to be best friends with a roller skating homeless dude"}),
+			WORK_FOR_GOVERMENT("Do the characters work for some kind of goverment agency?", new String[]{"Yes", "No"}),
+				SPY_AGENCY("Like a goverment SPY agency?", new String[]{"No", "I'm not at liberty to disclose that. Unless we're sleeping together", "Danger Zone!"}),
+				OWN_UNAFFORDABLE_APARTAMENT("Do the characters own apartaments they definitely can't afford?", new String[]{"WHO HAS A LOFT LIKE THAT ON A BARISTA'S SALARY?", "Nope"}),
+					CUPCAKES("3 words: Are there cupcakes?", new String[]{"You know it", "No unless you count James Van Beek", "No but that would be ah-MAH-zing"}),
+					SKETCH_COMEDY("Okay, so we must be talking sketch comedy.", new String[]{"Nailed it", "No, were not, dummy"}),
+						ABOUT_HIPSTERS("Sketch comedy about hipsters?", new String[]{"Yes, but I liked it before it was on Netflix", "No"}),
+						WEED("Huh. Uh... is there weed?", new String[]{"Yeah, they shmeoooke a bewrl", "No"}),
+		HAPPY_ABOUT_IT("Was she happy about it?", new String[]{"No", "So happy she lizzed her pants"}),
+			SHES_ONLY_A_GIRL("Because she's only a girl right?", new String[]{"Yes", "No"}),
+				ADORKABLE_GIRL("A girl who's adorkable?", new String[]{"Are you happy now commercials? We're using your dumb made-up word", "No"});		
+	question : String
+	answers : String[]
+end
+
+
+declare Answer
+	question : Question
+	answer : String
+end
+
+declare Result
+	result : String
+end
+
+
+rule "ASK QUESTION"
+when
+	q: Question()
+then
+	Object[] answers = q.getAnswers();
+	int x = JOptionPane.showOptionDialog(null, q.getQuestion(),
+                "Drools project",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, answers, answers[0]);
+    Answer answer = new Answer(q, (String)answers[x]);
+    insert(answer);
+end
+
+
+rule "SHOW RESULT"
+when
+	r: Result()
+then
+	JOptionPane.showMessageDialog(null, r.getResult());
+end
+
+
+rule "START"
+then
+    insert(Question.PREGNANT);
+end
+
+
+rule "PREGNANT - YES"
+when
+	Answer(question == Question.PREGNANT, answer == "Yes")
+then
+	insert(Question.BLACK_PEOPLE);
+end
+
+
+rule "PREGNANT - NO"
+when
+	Answer(question == Question.PREGNANT, answer == "No")
+then
+	insert(Question.KIDS);
+end
+
+
+rule "PREGNANT - SHE THOUGHT"
+when
+	Answer(question == Question.PREGNANT, answer == "No, but she thought she was")
+then
+	insert(Question.HAPPY_ABOUT_IT);
+end
+
+
+rule "PREGNANT - DURING"
+when
+	Answer(question == Question.PREGNANT, answer == "What do you mean, \"during\"?")
+then
+	Result result = new Result("Doctor Who");
+	insert(result);
+end
+
+
+rule "BLACK_PEOPLE - No"
+when
+	Answer(question == Question.BLACK_PEOPLE, answer == "No. These characters are so white, they're frightened of the Irish")
+then
+	Result result = new Result("Downtown Abbey");
+	insert(result);
+end
+
+
+rule "BLACK_PEOPLE - YES"
+when
+	Answer(question == Question.BLACK_PEOPLE, answer == "Yes")
+then
+	insert(Question.ZOMBIES);
+end
+
+
+rule "BLACK_PEOPLE - BARELY"
+when
+	Answer(question == Question.BLACK_PEOPLE, answer == "Barely")
+then
+	insert(Question.PHONES);
+end
+
+
+rule "ZOMBIES - DAZED EMPLOYEES"
+when
+	Answer(question == Question.ZOMBIES, answer == "Only if you count dazed employees")
+then
+	Result result = new Result("The office");
+	insert(result);
+end
+
+
+rule "ZOMBIES - YES"
+when
+	Answer(question == Question.ZOMBIES, answer == "Yes")
+then
+	insert(Question.REAL_ZOMBIES);
+end
+
+
+rule "ZOMBIES - NO"
+when
+	Answer(question == Question.ZOMBIES, answer == "No")
+then
+	insert(Question.OFTEN_GET_SHOT);
+end
+
+
+rule "REAL_ZOMBIES - YES"
+when
+	Answer(question == Question.REAL_ZOMBIES, answer == "Uh, yes, hello, only ALL THE TIME")
+then
+	Result result = new Result("Walking Dead");
+	insert(result);
+end
+
+
+rule "REAL_ZOMBIES - NO"
+when
+	Answer(question == Question.REAL_ZOMBIES, answer == "No")
+then
+	Result result = new Result("Community");
+	insert(result);
+end
+
+
+rule "OFTEN_GET_SHOT - OFTEN"
+when
+	Answer(question == Question.OFTEN_GET_SHOT, answer == "Every so often")
+then
+	Result result = new Result("Boardwalk Empire");
+	insert(result);
+end
+
+
+rule "OFTEN_GET_SHOT - NEVER"
+when
+	Answer(question == Question.OFTEN_GET_SHOT, answer == "Never")
+then
+	insert(Question.SING);
+end
+
+
+rule "OFTEN_GET_SHOT - ALL THE TIME"
+when
+	Answer(question == Question.OFTEN_GET_SHOT, answer == "Literally all the time")
+then
+	Result result = new Result("Justified");
+	insert(result);
+end
+
+
+rule "SING - BIG TIME"
+when
+	Answer(question == Question.SING, answer == "Big time")
+then
+	insert(Question.SONG_TYPE);
+end
+
+
+rule "SING - NO"
+when
+	Answer(question == Question.SING, answer == "No, thank God")
+then
+	Result result = new Result("Parenthood");
+	insert(result);
+end
+
+
+rule "SONG_TYPE - ORIGINALS"
+when
+	Answer(question == Question.SONG_TYPE, answer == "Originals. Horrible, horrible originals.")
+then
+	Result result = new Result("Smash");
+	insert(result);
+end
+
+
+rule "SONG_TYPE - COVERS"
+when
+	Answer(question == Question.SONG_TYPE, answer == "Covers. Horrible, horrible covers.")
+then
+	Result result = new Result("glee");
+	insert(result);
+end
+
+
+rule "PHONES - YES"
+when
+	Answer(question == Question.PHONES, answer == "Yes")
+then
+	insert(Question.SPORTS);
+end
+
+
+rule "PHONES - NO"
+when
+	Answer(question == Question.PHONES, answer == "No")
+then
+	insert(Question.CARS);
+end
+
+
+rule "SPORTS - YES"
+when
+	Answer(question == Question.SPORTS, answer == "Yes")
+then
+	insert(Question.REAL_OR_FANTASY);
+end
+
+
+rule "SPORTS - NO"
+when
+	Answer(question == Question.SPORTS, answer == "No")
+then
+	insert(Question.HAUNTED);
+end
+
+
+rule "HAUNTED - NO"
+when
+	Answer(question == Question.HAUNTED, answer == "No, nothing")
+then
+	insert(Question.MOTHER);
+end
+
+
+rule "HAUNTED - YES"
+when
+	Answer(question == Question.HAUNTED, answer == "Yes, almost everything")
+then
+	Result result = new Result("American horror story");
+	insert(result);
+end
+
+
+rule "HAUNTED - ONLY WALTS EYES"
+when
+	Answer(question == Question.HAUNTED, answer == "Only Walt's eyes, with the absolute corruption of innermost soul")
+then
+	Result result = new Result("Breaking Bad");
+	insert(result);
+end
+
+
+rule "MOTHER - YES"
+when
+	Answer(question == Question.MOTHER, answer == "Yeah...? Taht's a weird question")
+then
+	Result result = new Result("Modern family");
+	insert(result);
+end
+
+
+rule "MOTHER - NO"
+when
+	Answer(question == Question.MOTHER, answer == "No, and frankly it started getting ridiculous four seasons ago. Come on, writers, just tell us.")
+then
+	Result result = new Result("How I met your mother");
+	insert(result);
+end
+
+
+rule "REAL_OR_FANTASY - FANTASY"
+when
+	Answer(question == Question.REAL_OR_FANTASY, answer == "Fantasy")
+then
+	Result result = new Result("The league");
+	insert(result);
+end
+
+
+rule "MOTHER - REAL"
+when
+	Answer(question == Question.REAL_OR_FANTASY, answer == "Real. I  play real sports, not try to be the best at excercising.")
+then
+	Result result = new Result("Eastbound & Down");
+	insert(result);
+end
+
+
+rule "CARS - YES"
+when
+	Answer(question == Question.CARS, answer == "Yes. Cars. Cars as luxurious as the women you can never have")
+then
+	Result result = new Result("Mad men");
+	insert(result);
+end
+
+
+rule "CARS - NO"
+when
+	Answer(question == Question.CARS, answer == "Who needs a car when you can ride DEAD HORSES?")
+then
+	Result result = new Result("Game of Thrones");
+	insert(result);
+end
+
+
+rule "KIDS - YES"
+when
+	Answer(question == Question.KIDS, answer == "Yes")
+then
+	insert(Question.NORTHEAST);
+end
+
+
+rule "KIDS - NO"
+when
+	Answer(question == Question.KIDS, answer == "No")
+then
+	insert(Question.WORK_FOR_GOVERMENT);
+end
+
+
+rule "NORTHEAST - YES"
+when
+	Answer(question == Question.NORTHEAST, answer == "Yes")
+then
+	insert(Question.EVIL_QUEEN);
+end
+
+
+rule "NORTHEAST - NO"
+when
+	Answer(question == Question.NORTHEAST, answer == "No")
+then
+	insert(Question.DIAPER_PLOTLINE);
+end
+
+
+rule "EVIL_QUEEN - YES"
+when
+	Answer(question == Question.EVIL_QUEEN, answer == "Yes")
+then
+	Result result = new Result("Once upon a time");
+	insert(result);
+end
+
+
+rule "EVIL_QUEEN - ONLY EXWIFE"
+when
+	Answer(question == Question.EVIL_QUEEN, answer == "Only if you count ex-wife, amirite???")
+then
+	Result result = new Result("Louie");
+	insert(result);
+end
+
+
+rule "EVIL_QUEEN - NO"
+when
+	Answer(question == Question.EVIL_QUEEN, answer == "No")
+then
+	Result result = new Result("Bob's Burgers");
+	insert(result);
+end
+
+
+rule "DIAPER_PLOTLINE - YES"
+when
+	Answer(question == Question.DIAPER_PLOTLINE, answer == "Unfortunately, yes")
+then
+	insert(Question.RICH_OR_POOR);
+end
+
+
+rule "DIAPER_PLOTLINE - NO"
+when
+	Answer(question == Question.DIAPER_PLOTLINE, answer == "No")
+then
+	Result result = new Result("Nashville");
+	insert(result);
+end
+
+
+rule "RICH_OR_POOR - RICH"
+when
+	Answer(question == Question.RICH_OR_POOR, answer == "Rich enough to be best friends with basically Oprah")
+then
+	Result result = new Result("Up All Night");
+	insert(result);
+end
+
+
+rule "RICH_OR_POOR - POOR"
+when
+	Answer(question == Question.RICH_OR_POOR, answer == "Poor enough to be best friends with a roller skating homeless dude")
+then
+	Result result = new Result("Raising hope");
+	insert(result);
+end
+
+
+rule "WORK_FOR_GOVERMENT - YES"
+when
+	Answer(question == Question.WORK_FOR_GOVERMENT, answer == "Yes")
+then
+	insert(Question.SPY_AGENCY);
+end
+
+
+rule "WORK_FOR_GOVERMENT - NO"
+when
+	Answer(question == Question.WORK_FOR_GOVERMENT, answer == "No")
+then
+	insert(Question.OWN_UNAFFORDABLE_APARTAMENT);
+end
+
+
+rule "SPY_AGENCY - NO"
+when
+	Answer(question == Question.SPY_AGENCY, answer == "No")
+then
+	Result result = new Result("Parks and Recreation");
+	insert(result);
+end
+
+
+rule "SPY_AGENCY - PERHAPS"
+when
+	Answer(question == Question.SPY_AGENCY, answer == "I'm not at liberty to disclose that. Unless we're sleeping together")
+then
+	Result result = new Result("Homeland");
+	insert(result);
+end
+
+
+rule "SPY_AGENCY - DANGER ZONE"
+when
+	Answer(question == Question.SPY_AGENCY, answer == "Danger Zone!")
+then
+	Result result = new Result("Archer");
+	insert(result);
+end
+
+
+rule "OWN_UNAFFORDABLE_APARTAMENT - Yes"
+when
+	Answer(question == Question.OWN_UNAFFORDABLE_APARTAMENT, answer == "WHO HAS A LOFT LIKE THAT ON A BARISTA'S SALARY?")
+then
+	insert(Question.CUPCAKES);
+end
+
+
+rule "OWN_UNAFFORDABLE_APARTAMENT - NO"
+when
+	Answer(question == Question.OWN_UNAFFORDABLE_APARTAMENT, answer == "Nope")
+then
+	insert(Question.SKETCH_COMEDY);
+end
+
+
+rule "CUPCAKES - YES"
+when
+	Answer(question == Question.CUPCAKES, answer == "You know it")
+then
+	Result result = new Result("2 Broke Girls");
+	insert(result);
+end
+
+
+rule "CUPCAKES - VAN DER BEEK"
+when
+	Answer(question == Question.CUPCAKES, answer == "No unless you count James Van Beek")
+then
+	Result result = new Result("Don't Trust the B---- in Apartment 23");
+	insert(result);
+end
+
+
+rule "CUPCAKES - NO"
+when
+	Answer(question == Question.CUPCAKES, answer == "No but that would be ah-MAH-zing")
+then
+	Result result = new Result("Happy Endings");
+	insert(result);
+end
+
+
+rule "SKETCH_COMEDY - YES"
+when
+	Answer(question == Question.SKETCH_COMEDY, answer == "Nailed it")
+then
+	insert(Question.ABOUT_HIPSTERS);
+end
+
+
+rule "SKETCH_COMEDY - NO"
+when
+	Answer(question == Question.SKETCH_COMEDY, answer == "No, were not, dummy")
+then
+	insert(Question.WEED);
+end
+
+
+rule "ABOUT_HIPSTERS - YES"
+when
+	Answer(question == Question.ABOUT_HIPSTERS, answer == "Yes, but I liked it before it was on Netflix")
+then
+	Result result = new Result("Portlandia");
+	insert(result);
+end
+
+
+rule "ABOUT_HIPSTERS - NO"
+when
+	Answer(question == Question.ABOUT_HIPSTERS, answer == "No")
+then
+	Result result = new Result("Key & Peele");
+	insert(result);
+end
+
+
+rule "WEED - YES"
+when
+	Answer(question == Question.WEED, answer == "Yeah, they shmeoooke a bewrl")
+then
+	Result result = new Result("Workaholics");
+	insert(result);
+end
+
+
+rule "WEED - NO"
+when
+	Answer(question == Question.WEED, answer == "No")
+then
+	Result result = new Result("Grimm");
+	insert(result);
+end
+
+
+rule "HAPPY_ABOUT_IT - NO"
+when
+	Answer(question == Question.HAPPY_ABOUT_IT, answer == "No")
+then
+	insert(Question.SHES_ONLY_A_GIRL);
+end
+
+
+rule "HAPPY_ABOUT_IT - YES"
+when
+	Answer(question == Question.HAPPY_ABOUT_IT, answer == "So happy she lizzed her pants")
+then
+	Result result = new Result("30 Rock");
+	insert(result);
+end
+
+
+rule "SHES_ONLY_A_GIRL - YES"
+when
+	Answer(question == Question.SHES_ONLY_A_GIRL, answer == "Yes")
+then
+	insert(Question.ADORKABLE_GIRL);
+end
+
+
+rule "SHES_ONLY_A_GIRL - NO"
+when
+	Answer(question == Question.SHES_ONLY_A_GIRL, answer == "No")
+then
+	Result result = new Result("Veep");
+	insert(result);
+end
+
+
+rule "ADORKABLE_GIRL - YES"
+when
+	Answer(question == Question.ADORKABLE_GIRL, answer == "Are you happy now commercials? We're using your dumb made-up word")
+then
+	Result result = new Result("New Girl");
+	insert(result);
+end
+
+
+rule "ADORKABLE_GIRL - No"
+when
+	Answer(question == Question.ADORKABLE_GIRL, answer == "No")
+then
+	Result result = new Result("Girls");
+	insert(result);
+end

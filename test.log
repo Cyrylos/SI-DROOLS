@@ -1,0 +1,314 @@
+<object-stream>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>START [0]</activationId>
+      <rule>START</rule>
+      <declarations></declarations>
+      <factHandleIds>0</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>START [0]</activationId>
+      <rule>START</rule>
+      <declarations></declarations>
+      <factHandleIds>0</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>1</factId>
+      <objectToString>PREGNANT</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>START [0]</activationId>
+      <rule>START</rule>
+      <declarations></declarations>
+      <factHandleIds>0</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>ASK QUESTION [1]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=PREGNANT</declarations>
+      <factHandleIds>1</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>ASK QUESTION [1]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=PREGNANT</declarations>
+      <factHandleIds>1</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>2</factId>
+      <objectToString>Answer( question=PREGNANT, answer=Yes )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>ASK QUESTION [1]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=PREGNANT</declarations>
+      <factHandleIds>1</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>PREGNANT - YES [2]</activationId>
+      <rule>PREGNANT - YES</rule>
+      <declarations></declarations>
+      <factHandleIds>2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>PREGNANT - YES [2]</activationId>
+      <rule>PREGNANT - YES</rule>
+      <declarations></declarations>
+      <factHandleIds>2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>3</factId>
+      <objectToString>BLACK_PEOPLE</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>PREGNANT - YES [2]</activationId>
+      <rule>PREGNANT - YES</rule>
+      <declarations></declarations>
+      <factHandleIds>2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>ASK QUESTION [3]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=BLACK_PEOPLE</declarations>
+      <factHandleIds>3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>ASK QUESTION [3]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=BLACK_PEOPLE</declarations>
+      <factHandleIds>3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>4</factId>
+      <objectToString>Answer( question=BLACK_PEOPLE, answer=Barely )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>ASK QUESTION [3]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=BLACK_PEOPLE</declarations>
+      <factHandleIds>3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>BLACK_PEOPLE - BARELY [4]</activationId>
+      <rule>BLACK_PEOPLE - BARELY</rule>
+      <declarations></declarations>
+      <factHandleIds>4</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>BLACK_PEOPLE - BARELY [4]</activationId>
+      <rule>BLACK_PEOPLE - BARELY</rule>
+      <declarations></declarations>
+      <factHandleIds>4</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>5</factId>
+      <objectToString>PHONES</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>BLACK_PEOPLE - BARELY [4]</activationId>
+      <rule>BLACK_PEOPLE - BARELY</rule>
+      <declarations></declarations>
+      <factHandleIds>4</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>ASK QUESTION [5]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=PHONES</declarations>
+      <factHandleIds>5</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>ASK QUESTION [5]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=PHONES</declarations>
+      <factHandleIds>5</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>6</factId>
+      <objectToString>Answer( question=PHONES, answer=Yes )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>ASK QUESTION [5]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=PHONES</declarations>
+      <factHandleIds>5</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>PHONES - YES [6]</activationId>
+      <rule>PHONES - YES</rule>
+      <declarations></declarations>
+      <factHandleIds>6</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>PHONES - YES [6]</activationId>
+      <rule>PHONES - YES</rule>
+      <declarations></declarations>
+      <factHandleIds>6</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>7</factId>
+      <objectToString>SPORTS</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>PHONES - YES [6]</activationId>
+      <rule>PHONES - YES</rule>
+      <declarations></declarations>
+      <factHandleIds>6</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>ASK QUESTION [7]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=SPORTS</declarations>
+      <factHandleIds>7</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>ASK QUESTION [7]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=SPORTS</declarations>
+      <factHandleIds>7</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>8</factId>
+      <objectToString>Answer( question=SPORTS, answer=No )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>ASK QUESTION [7]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=SPORTS</declarations>
+      <factHandleIds>7</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>SPORTS - NO [8]</activationId>
+      <rule>SPORTS - NO</rule>
+      <declarations></declarations>
+      <factHandleIds>8</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>SPORTS - NO [8]</activationId>
+      <rule>SPORTS - NO</rule>
+      <declarations></declarations>
+      <factHandleIds>8</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>9</factId>
+      <objectToString>HAUNTED</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>SPORTS - NO [8]</activationId>
+      <rule>SPORTS - NO</rule>
+      <declarations></declarations>
+      <factHandleIds>8</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>ASK QUESTION [9]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=HAUNTED</declarations>
+      <factHandleIds>9</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>ASK QUESTION [9]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=HAUNTED</declarations>
+      <factHandleIds>9</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>10</factId>
+      <objectToString>Answer( question=HAUNTED, answer=Only Walt&apos;s eyes, with the absolute corruption of innermost soul )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>ASK QUESTION [9]</activationId>
+      <rule>ASK QUESTION</rule>
+      <declarations>q=HAUNTED</declarations>
+      <factHandleIds>9</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>HAUNTED - ONLY WALTS EYES [10]</activationId>
+      <rule>HAUNTED - ONLY WALTS EYES</rule>
+      <declarations></declarations>
+      <factHandleIds>10</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>HAUNTED - ONLY WALTS EYES [10]</activationId>
+      <rule>HAUNTED - ONLY WALTS EYES</rule>
+      <declarations></declarations>
+      <factHandleIds>10</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>11</factId>
+      <objectToString>Result( result=Breaking Bad )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>HAUNTED - ONLY WALTS EYES [10]</activationId>
+      <rule>HAUNTED - ONLY WALTS EYES</rule>
+      <declarations></declarations>
+      <factHandleIds>10</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>SHOW RESULT [11]</activationId>
+      <rule>SHOW RESULT</rule>
+      <declarations>r=Result( result=Breaking Bad )</declarations>
+      <factHandleIds>11</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>SHOW RESULT [11]</activationId>
+      <rule>SHOW RESULT</rule>
+      <declarations>r=Result( result=Breaking Bad )</declarations>
+      <factHandleIds>11</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>SHOW RESULT [11]</activationId>
+      <rule>SHOW RESULT</rule>
+      <declarations>r=Result( result=Breaking Bad )</declarations>
+      <factHandleIds>11</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+  </events>
+</org.drools.core.audit.WorkingMemoryLog>
+</object-stream>
