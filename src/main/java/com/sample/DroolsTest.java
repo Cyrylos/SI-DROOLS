@@ -13,13 +13,13 @@ public class DroolsTest {
         try {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
-    	    KieContainer kContainer = ks.getKieClasspathContainer();
+    	    	KieContainer kContainer = ks.getKieClasspathContainer();
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
         	KieRuntimeLogger kLogger = ks.getLoggers().newFileLogger(kSession, "test");
-            kSession.fireAllRules();
-            kLogger.close();
+            	kSession.fireAllRules();
+            	kLogger.close();
         } catch (Throwable t) {
-            t.printStackTrace();
+         	t.printStackTrace();
         }
     }
 
